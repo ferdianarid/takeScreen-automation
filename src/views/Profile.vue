@@ -95,7 +95,7 @@
               </div>
               <div class="text-center mt-12">
                 <h3
-                  class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"
+                  class="text-4xl font-semibold leading-normal text-blueGray-700 mb-2"
                 >
                   Jenna Stones
                 </h3>

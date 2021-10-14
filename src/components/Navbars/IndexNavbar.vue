@@ -13,7 +13,7 @@
             class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
             href="#pablo"
           >
-            Vue Notus
+            Learn with Fun
           </a>
         </router-link>
         <button
@@ -33,7 +33,7 @@
           <li class="flex items-center">
             <a
               class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-index-navbar"
+              href=""
             >
               <i
                 class="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"
@@ -49,7 +49,7 @@
           <li class="flex items-center">
             <a
               class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fvue-notus%2F%23%2F"
+              href=""
               target="_blank"
             >
               <i class="text-blueGray-400 fab fa-facebook text-lg leading-lg" />
