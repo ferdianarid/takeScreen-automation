@@ -22,7 +22,7 @@ Every element has multiple states for colors, styles, hover, focus, that you can
 
 This is the project structure that you will get upon the download:
 ```
-vue-notus
+Learn with Fun
 .
 ├── CHANGELOG.md
 ├── ISSUE_TEMPLATE.md
