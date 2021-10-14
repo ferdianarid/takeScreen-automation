@@ -1,0 +1,7 @@
+* {
+    font-family: "SF Pro Display", sans-serif;
+}
+
+.headerStats {
+    background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+}
