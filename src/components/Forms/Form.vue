@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<!-- Component End  -->
-		<button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 ml-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-emerald-800" type="button">
+		<button @click="postData()" class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 ml-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-emerald-800" type="button">
 			<i class="fas fa-paper-plane"></i>&nbsp;
 			Send Data
 		</button>
@@ -76,6 +76,22 @@ async postData() {
 		}
 	},
 },
+onClick() {
+              axios({
+                    url: 'http://localhost:5000/data',
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                     var fileLink = document.createElement('a');
+   
+                     fileLink.href = fileURL;
+                     fileLink.setAttribute('download', 'file.pdf');
+                     document.body.appendChild(fileLink);
+   
+                     fileLink.click();
+                });
+          }
 };
 </script>
 <style></style>
