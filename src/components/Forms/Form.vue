@@ -69,6 +69,7 @@ async postData() {
 			this.domain = "";
 			this.username = "";
 			this.password = "";
+			console.log("Success")
 		} catch (err) {
 			console.log(err);
 		} finally {
