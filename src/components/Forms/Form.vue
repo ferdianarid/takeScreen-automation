@@ -77,6 +77,17 @@ async postData() {
 		}
 	},
 },
+async getData() {
+	try {
+		await axios.get("119.8.175.1:5050/data")
+			console.log(data)
+		} catch (err) {
+			console.log(err);
+		} finally {
+			console.log('success')
+		}
+	},
+},
 onClick() {
               axios({
                     url: 'http://localhost:5000/data',
