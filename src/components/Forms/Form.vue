@@ -61,7 +61,7 @@ export default {
 methods: {
 async postData() {
 	try {
-		await axios.post("http://localhost:5000/data", {
+		await axios.post("119.8.175.1:5050/data", {
 			domain: this.domain,
 			username: this.username,
 			password: this.password,
