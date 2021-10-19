@@ -87,7 +87,6 @@ async getData() {
 			console.log('success')
 		}
 	},
-},
 onClick() {
               axios({
                     url: 'http://localhost:5000/data',
