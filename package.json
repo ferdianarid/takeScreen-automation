@@ -22,6 +22,7 @@
         "core-js": "3.9.1",
         "gulp": "4.0.2",
         "gulp-append-prepend": "1.0.8",
+        "nprogress": "^0.2.0",
         "tailwindcss": "2.0.4",
         "vue": "3.0.7",
         "vue-button-spinner": "^2.2.1",

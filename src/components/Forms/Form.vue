@@ -13,8 +13,8 @@
 				<div class="relative w-full mb-3">
 					<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
 					htmlFor="grid-password"> Domain </label>
-					<input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-					value="" placeholder="Enter Domain"/>
+					<input type="text" name="domain" id="domain" v-model="domain" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+					placeholder="Enter Domain"/>
 				</div>
 			</div>
 			<!-- Username Input -->
@@ -22,8 +22,8 @@
 				<div class="relative w-full mb-3">
 					<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
 					htmlFor="grid-password"> Username </label>
-					<input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-					value="" placeholder="Enter Username"/>
+					<input type="text" name="username" id="username" v-model="username" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+					placeholder="Enter Username"/>
 				</div>
 			</div>
 			<!-- Password Input -->
@@ -31,8 +31,8 @@
 				<div class="relative w-full mb-3">
 					<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
 					htmlFor="grid-password"> Password </label>
-					<input type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-					value="" placeholder="Enter Password"/>
+					<input type="password" name="password" id="password" v-model="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+					placeholder="Enter Password"/>
 				</div>
 			</div>
 		</div>
@@ -49,6 +49,7 @@
 <script>
 import axios from "axios";
 
+// const httpAgent = new http.Agent({ keepAlive: true });
 export default {
 	name: "Form",
 	data() {
@@ -56,27 +57,44 @@ export default {
 			domain: "",
 			username: "",
 			password: ""
+	};
+},
+methods: {
+async postData() {
+	try {
+		const req = await axios.post("http://localhost:5050/data", {
+			domain: this.domain,
+			username: this.username,
+			password: this.password
+		});
+			this.domain = "";
+			this.username = "";
+			this.password = "";
+			console.log("Success")
+			console.log(req)
+		} catch (err) {
+			console.log(err);
+		} finally {
+			console.log('success')
 		}
 	},
-	methods: {
-		async postData() {
-			try {
-				await axios.post("119.8.175.1:5050/data", {
-					domain: this.domain,
-					username: this.username,
-					password: this.password,
-			});
-				this.domain = "";
-				this.username = "";
-				this.password = "";
-				console.log("Success")
-			} catch (err) {
-				console.log(err);
-			} finally {
-				console.log('success')
-			}
-		}
-	}
-}
+},
+onClick() {
+              axios({
+                    url: 'http://localhost:5050/data',
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                     var fileLink = document.createElement('a');
+   
+                     fileLink.href = fileURL;
+                     fileLink.setAttribute('download', 'file.pdf');
+                     document.body.appendChild(fileLink);
+   
+                     fileLink.click();
+                });
+          }
+};
 </script>
 <style></style>
