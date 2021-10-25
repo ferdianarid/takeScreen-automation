@@ -41,28 +41,29 @@
 			<i class="fas fa-paper-plane"></i>&nbsp;
 			Send Data
 		</button>
+		<h5>{{ baseImg }}</h5>
 		</div>
 	</div>
 </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
+import NProgress from "nprogress"
 
 // const httpAgent = new http.Agent({ keepAlive: true });
 export default {
 	name: "Form",
 	data() {
 		return {
-			domain: "",
-			username: "",
-			password: ""
+			baseImg: ""
 	};
 },
 methods: {
 async postData() {
 	try {
-		const req = await axios.post("http://localhost:5050/data", {
+		NProgress.start()
+		await axios.post("http://localhost:5000/data", {
 			domain: this.domain,
 			username: this.username,
 			password: this.password
@@ -71,30 +72,21 @@ async postData() {
 			this.username = "";
 			this.password = "";
 			console.log("Success")
-			console.log(req)
 		} catch (err) {
 			console.log(err);
 		} finally {
 			console.log('success')
+			NProgress.done()
 		}
 	},
 },
-onClick() {
-              axios({
-                    url: 'http://localhost:5050/data',
-                    method: 'GET',
-                    responseType: 'blob',
-                }).then((response) => {
-                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-                     var fileLink = document.createElement('a');
-   
-                     fileLink.href = fileURL;
-                     fileLink.setAttribute('download', 'file.pdf');
-                     document.body.appendChild(fileLink);
-   
-                     fileLink.click();
-                });
-          }
-};
+// mounted() {
+// 	NProgress.start()
+// 		axios.get('https://jsonplaceholder.typicode.com/todos/').then(response => this.baseImg = response.data)
+// 		console.log(this.baseImg);
+// 	NProgress.done()
+// 	}
+}
+
 </script>
 <style></style>

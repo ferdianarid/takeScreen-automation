@@ -80,7 +80,7 @@
 				<!-- Navigation -->
 
 				<ul class="md:flex-col md:min-w-full flex flex-col list-none">
-					<li class="items-center">
+					<!-- <li class="items-center">
 						<router-link
 							to="/admin/dashboard"
 							v-slot="{ href, navigate, isActive }"
@@ -171,7 +171,7 @@
 								Maps
 							</a>
 						</router-link>
-					</li>
+					</li> -->
 
 					<li class="items-center">
 						<router-link to="/admin/capture" v-slot="{ href, navigate, isActive }">
