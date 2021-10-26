@@ -41,10 +41,25 @@
 			<i class="fas fa-paper-plane"></i>&nbsp;
 			Send Data
 		</button>
-		<h5>{{ baseImg }}</h5>
 		</div>
 	</div>
+	<div class="outputArea w-full  sm:w-1/2">
+			<h1 class="font-bold text-xl mt-10 ml-5 mb-4">Result : </h1>
+			<div id="preview" v-if="isFetched">
+				<img :src="baseImg" alt="Gambar"/>
+				<div class="text-center">
+				<button  class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 ml-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-emerald-800" type="button">
+					<i class="fas fa-download"></i>&nbsp;
+					Download
+					</button>
+				</div>
+			</div>
+			<div id="preview">
+				Not fetched
+			</div>
+	</div>
 </div>
+
 </template>
 
 <script>
@@ -56,22 +71,29 @@ export default {
 	name: "Form",
 	data() {
 		return {
-			baseImg: ""
+			baseImg: "",
+			isFetched: false
 	};
 },
 methods: {
 async postData() {
 	try {
-		NProgress.start()
-		await axios.post("http://localhost:5000/data", {
-			domain: this.domain,
-			username: this.username,
-			password: this.password
-		});
+			NProgress.start()
+			const result =  await axios.post("http://localhost:5000/data", {
+				domain: this.domain,
+				username: this.username,
+				password: this.password
+			});
+
+			this.baseImg = "data:image/png;base64, "+result.data.data;
+			this.isFetched = true;
+			console.log("data:image/png;base64, "+result.data.data);
 			this.domain = "";
 			this.username = "";
 			this.password = "";
-			console.log("Success")
+			const img = new Image();
+			img.src = "data:image/jpeg;base64, " + result.data.data;
+			return img;	
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -79,13 +101,7 @@ async postData() {
 			NProgress.done()
 		}
 	},
-},
-// mounted() {
-// 	NProgress.start()
-// 		axios.get('https://jsonplaceholder.typicode.com/todos/').then(response => this.baseImg = response.data)
-// 		console.log(this.baseImg);
-// 	NProgress.done()
-// 	}
+}
 }
 
 </script>
