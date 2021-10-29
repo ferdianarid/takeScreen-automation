@@ -79,7 +79,7 @@ methods: {
 async postData() {
 	try {
 			NProgress.start()
-			const result =  await axios.post("http://localhost:5000/data", {
+			const result =  await axios.post("119.8.175.1:5050/data", {
 				domain: this.domain,
 				username: this.username,
 				password: this.password
