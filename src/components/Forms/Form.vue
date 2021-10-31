@@ -79,7 +79,7 @@ methods: {
 async postData() {
 	try {
 			NProgress.start()
-			const result =  await axios.post("119.8.175.1:5050/data", {
+			const result =  await axios.post("http://119.8.175.1:5050/data", {
 				domain: this.domain,
 				username: this.username,
 				password: this.password
@@ -93,12 +93,12 @@ async postData() {
 			this.password = "";
 			const img = new Image();
 			img.src = "data:image/jpeg;base64, " + result.data.data;
-			return img;	
+			NProgress.done();
+			return img;
 		} catch (err) {
 			console.log(err);
 		} finally {
 			console.log('success')
-			NProgress.done()
 		}
 	},
 }
