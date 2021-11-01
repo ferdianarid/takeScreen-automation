@@ -2,9 +2,10 @@
   <!-- Header -->
   <div class="relative md:pt-32 pb-32 pt-12 headerStats">
     <div class="px-4 md:px-10 mx-auto w-full">
+      <h1 class="text-2xl text-white font-bold">Screenshot</h1>
       <div>
         <!-- Card stats -->
-        <div class="flex flex-wrap">
+        <!-- <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="TRAFFIC"
@@ -53,18 +54,18 @@
               statIconColor="bg-emerald-500"
             />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CardStats from "@/components/Cards/CardStats.vue";
+// import CardStats from "@/components/Cards/CardStats.vue";
 
 export default {
   components: {
-    CardStats,
+    // CardStats,
   },
 };
 </script>
