@@ -79,7 +79,7 @@ methods: {
 async postData() {
 	try {
 			NProgress.start()
-			const result =  await axios.post("http://119.8.175.1:5050/data", {
+			const result =  await axios.post("https://puppeteerservice.netlify.app/data", {
 				domain: this.domain,
 				username: this.username,
 				password: this.password
