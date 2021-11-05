@@ -84,7 +84,6 @@ async postData() {
 				username: this.username,
 				password: this.password
 			});
-
 			this.baseImg = "data:image/png;base64, "+result.data.data;
 			this.isFetched = true;
 			console.log("data:image/png;base64, "+result.data.data);
